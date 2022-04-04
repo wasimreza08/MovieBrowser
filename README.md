@@ -12,7 +12,7 @@ Effects are mostly the side effects of the view e.g., unknown error, network err
 ## Events
 The user interaction with app is called events. The events are handled by the view model. For events I have used shared flow. Shared flow is a hot stream. If there is no active subscriber then any steam of shared flow is instantly dropped. Shared flow can provide data from 0 to n number of subscriber. 
 
-##Reference:
+## Reference:
 1. https://proandroiddev.com/mvi-architecture-with-kotlin-flows-and-channels-d36820b2028d
 2. https://elizarov.medium.com/shared-flows-broadcast-channels-899b675e805c
 
