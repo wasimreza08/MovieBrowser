@@ -1,0 +1,32 @@
+apply from: "$rootDir/buildsystem/android-library.gradle"
+
+android {
+
+    defaultConfig {
+        buildConfigField "String", "TMDB_API_KEY", "\"your_api_key\""
+
+        buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+    }
+}
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    implementation commonDependencies.jetbrains.coroutine
+    implementation project(path: ':core-common')
+    implementation commonDependencies.other.retrofit2
+    implementation commonDependencies.other.retrofit2MoshiConverter
+    implementation commonDependencies.other.okHttp
+    implementation commonDependencies.other.okHttpInterceptor
+
+    implementation commonDependencies.other.moshiBase
+    implementation commonDependencies.other.moshiKt
+    implementation commonDependencies.other.moshiAdapter
+    kapt commonDependencies.other.moshiCodeGen
+    //test
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+    testImplementation commonTestDependencies.mockk
+    testImplementation commonTestDependencies.mockkAndroid
+    testImplementation commonTestDependencies.junit4
+    testImplementation commonTestDependencies.turbine
+    testImplementation commonTestDependencies.coroutineTest
+}
